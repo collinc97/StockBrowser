@@ -1,3 +1,4 @@
+import requests
 from flask import render_template, request
 from stockApp import app
 
