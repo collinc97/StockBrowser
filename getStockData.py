@@ -5,7 +5,7 @@ token = '25D26255F6924F31BD86503A4253BEA0'
 
 def queryStock(stockArray, startDate, endDate):
     for stock in stockArray:
-        url='http://ws.nasdaqdod.com/v2/NASDAQAnalytics.asmx/GetEndOfDayData'
+        url='http://ws.nasdaqdod.com/v1/NASDAQAnalytics.asmx/GetEndOfDayData'
         data = {'_Token' : '%s' % token,
         'Symbols' : '%s' % stock,
         'StartDate' : '%s' % startDate,
