@@ -1,20 +1,21 @@
 import requests
-from flask import render_template, request
+from flask import render_template, request, url_for
 from stockApp import app
+from getStockData import queryStock
 
 @app.route('/')
 def index():
-    return "index.html"
-
-@app.route('/form', methods=['POST'])
+    return "hi collin"
 
 @app.route('/home')
 def home():
     return render_template("index.html")
 
-@app.route("/TEST", methods=['GET', 'POST'])
-def TEST():
-    if request.method == 'POST':
-        return "You are using POST"
-    else:
-        return "You are using GET"
+@app.route('/home', methods=['POST'])
+def form():
+    ticker = request.form['tickerArr']
+    startDate = request.form['startDate']
+    endDate = request.form['endDate']
+    #'GOOG, APPL' => ['GOOG', 'APPL']
+    tickerArr = [ticker]
+    return queryStock(tickerArr, startDate, endDate)
