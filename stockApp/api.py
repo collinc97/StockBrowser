@@ -2,6 +2,7 @@ import requests
 from flask import render_template, request, url_for
 from stockApp import app
 from getStockData import queryStock
+from xmlConvert import xml2csv
 
 tickerLst = ['MSFT', 'NDAQ', 'IBM', 'BLK', 'KLAC', 'ORCL', 'FEYE', 'COF', 'SAP', 'SQ', 'FB', 'GDDY', 'SYNA', 'TWLO', 'TWO'];
 
@@ -24,4 +25,5 @@ def form():
         if request.form.get(ticker):
             lst.append(ticker)
     queryStock(lst, startDate, endDate)
+    xml2csv()
     return render_template("index.html")
