@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ArrayOfEndOfDayPriceCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ws.nasdaqdod.com/services/v1/">
-  <EndOfDayPriceCollection>
-    <Outcome>RequestError</Outcome>
-    <Message>Could not convert  to a valid starting date</Message>
-    <Identity>Request</Identity>
-    <Delay>0.0156055</Delay>
-  </EndOfDayPriceCollection>
-</ArrayOfEndOfDayPriceCollection>

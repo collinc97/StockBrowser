@@ -3,6 +3,8 @@ from flask import render_template, request, url_for
 from stockApp import app
 from getStockData import queryStock
 
+tickerLst = ['MSFT', 'NDAQ', 'IBM', 'BLK', 'KLAC', 'ORCL', 'FEYE', 'COF', 'SAP', 'SQ', 'FB', 'GDDY', 'SYNA', 'TWLO', 'TWO'];
+
 @app.route('/')
 def index():
     return "hi collin"
@@ -13,9 +15,13 @@ def home():
 
 @app.route('/home', methods=['POST'])
 def form():
-    ticker = request.form['tickerArr']
+    #ticker = request.form['tickerArr']
     startDate = request.form['startDate']
     endDate = request.form['endDate']
     #'GOOG, APPL' => ['GOOG', 'APPL']
-    tickerArr = [ticker]
-    return queryStock(tickerArr, startDate, endDate)
+    lst = []
+    for ticker in tickerLst:
+        if request.form.get(ticker):
+            lst.append(ticker)
+    queryStock(lst, startDate, endDate)
+    return render_template("index.html")

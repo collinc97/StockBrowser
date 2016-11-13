@@ -1,6 +1,7 @@
 import io
 import requests
 
+save_dir = "./stockApp/static/xml/"
 token = '25D26255F6924F31BD86503A4253BEA0'
 
 def queryStock(stockArray, startDate, endDate):
@@ -12,7 +13,6 @@ def queryStock(stockArray, startDate, endDate):
         'EndDate' : '%s' % endDate,
         'MarketCenters' : '' }
         r = requests.get(url, params = data)
-        with io.FileIO(stock + startDate.replace('/', '.')[:-5] + 'to' + endDate.replace('/', '.')[:-5] + ".xml", 'w') as f:
+        fileName = stock + '_' + startDate.replace('/', '.')[:-5] + '_' + endDate.replace('/', '.')[:-5] + ".xml"
+        with io.FileIO(save_dir + fileName, 'w') as f:
             f.write(r.text)
-            f.close()
-        return r.text
