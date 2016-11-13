@@ -18,7 +18,7 @@ def queryStock(stockArray, startDate, endDate):
         'EndDate' : '%s' % endDate,
         'MarketCenters' : '' }
         r = requests.get(url, params = data)
-        with io.FileIO(stock + ".xml", 'w') as f:
+        with io.FileIO(stock + startDate[:-4] + endDate[:-4] + ".xml", 'w') as f:
             f.write(r.text)
             f.close()
 

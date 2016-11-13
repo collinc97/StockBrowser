@@ -6,6 +6,8 @@ from stockApp import app
 def index():
     return "index.html"
 
+@app.route('/form', methods=['POST'])
+
 @app.route('/home')
 def home():
     return render_template("index.html")
